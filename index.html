@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso Práctico: Registro y Panel Interactivo con jQuery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Laboratorio: Sistema de Registro y Panel Reactivo</h1>
+            <p>Desarrollo de Entornos Web • Implementación de jQuery 3.7.1</p>
+        </header>
+
+        <main class="main-layout">
+            <section class="card" aria-labelledby="form-heading">
+                <h2 id="form-heading" class="card-title">Registro de Usuario</h2>
+                
+                <div id="form-feedback" role="alert"></div>
+
+                <form id="registro-form" novalidate>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Ej. Ana Pérez" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico *</label>
+                        <input type="email" id="correo" class="form-control" placeholder="ana.perez@dominio.com" autocomplete="off">
+                    </div>
+
+                    <button type="submit" id="btn-submit" class="btn" style="width: 100%;">
+                        Registrar y Activar Panel
+                    </button>
+                </form>
+            </section>
+
+            <section class="card" aria-labelledby="panel-heading">
+                <div class="card-title">
+                    <span id="panel-heading">Panel de Control</span>
+                    <button type="button" id="btn-toggle-info" class="btn btn-secondary btn-sm">
+                        Ocultar Bienvenida
+                    </button>
+                </div>
+
+                <div id="card-welcome">
+                    <h4>¡Hola, <span class="user-display-name">Invitado</span>!</h4>
+                    <p>Bienvenido al módulo interactivo. Configura la apariencia del contenedor en tiempo real usando los botones inferiores.</p>
+                </div>
+
+                <div class="interactive-stage">
+                    <div id="interactive-box">
+                        <strong class="user-display-name">Invitado</strong>
+                        <span>Caja Dinámica</span>
+                    </div>
+                </div>
+
+                <div>
+                    <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.3rem;">
+                        Cambio de Estilos con <code>.css()</code>:
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" id="btn-theme-blue" class="btn btn-sm" style="background: #2563eb;">Azul</button>
+                        <button type="button" id="btn-theme-emerald" class="btn btn-sm" style="background: #059669;">Verde</button>
+                        <button type="button" id="btn-theme-violet" class="btn btn-sm" style="background: #7c3aed;">Violeta</button>
+                    </div>
+
+                    <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 1rem; margin-bottom: 0.3rem;">
+                        Animaciones con <code>.animate()</code>:
+                    </p>
+                    <div class="btn-group">
+                        <button type="button" id="btn-anim-expand" class="btn btn-secondary btn-sm">Expandir</button>
+                        <button type="button" id="btn-anim-shrink" class="btn btn-secondary btn-sm">Reducir</button>
+                        <button type="button" id="btn-anim-pulse" class="btn btn-secondary btn-sm">Efecto Pulso</button>
+                        <button type="button" id="btn-anim-reset" class="btn btn-secondary btn-sm">Restablecer</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Guía de Evaluación Práctica • Unidad Didáctica: Desarrollo de Entornos Web</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
