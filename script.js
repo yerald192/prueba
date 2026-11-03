@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+    // Actualizar nombre en tiempo real
     $('#nombre').on('input', function() {
         var valorActual = $(this).val().trim();
         
@@ -9,6 +11,23 @@ $(document).ready(function() {
         }
     });
 
+    // Ocultar mensaje al enfocar inputs o hacer clic
+    $('#nombre, #correo').on('focus', function() {
+        $('#form-feedback').fadeOut(300);
+    });
+
+    $('#form-feedback').css('cursor', 'pointer').click(function() {
+        $(this).slideUp(300);
+    });
+
+    // Resaltar inputs al enfocar
+    $('#registro-form input').on('focus', function() {
+        $(this).css('border-color', '#2563eb');
+    }).on('blur', function() {
+        $(this).css('border-color', '');
+    });
+
+    // Validación y envío del formulario
     $('#registro-form').submit(function(event) {
         event.preventDefault();
 
@@ -16,6 +35,8 @@ $(document).ready(function() {
         var correo = $('#correo').val().trim();
         var $feedback = $('#form-feedback');
         var patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        $feedback.hide();
 
         if (nombre === '' || correo === '') {
             $feedback
@@ -25,7 +46,7 @@ $(document).ready(function() {
                     'color': '#991b1b',
                     'border': '1px solid #f87171'
                 })
-                .fadeIn(300);
+                .show();
             return;
         }
 
@@ -37,7 +58,7 @@ $(document).ready(function() {
                     'color': '#92400e',
                     'border': '1px solid #fcd34d'
                 })
-                .fadeIn(300);
+                .show();
             return;
         }
 
@@ -48,18 +69,21 @@ $(document).ready(function() {
                 'color': '#166534',
                 'border': '1px solid #86efac'
             })
-            .fadeIn(300);
+            .show();
 
         $('.user-display-name').text(nombre);
+        $('#nombre, #correo').val('');
     });
 
+    // Alternar tarjeta de bienvenida
     $('#btn-toggle-info').click(function() {
-        $('#card-welcome').slideToggle(400, function() {
+        $('#card-welcome').toggle(400, function() {
             var visible = $('#card-welcome').is(':visible');
             $('#btn-toggle-info').text(visible ? 'Ocultar Bienvenida' : 'Mostrar Bienvenida');
         });
     });
 
+    // Cambiar color del contenedor
     $('#btn-theme-blue').click(function() {
         $('#interactive-box').css({
             'background-color': '#2563eb',
@@ -84,6 +108,25 @@ $(document).ready(function() {
         });
     });
 
+    // Efectos de desvanecimiento
+    $('#btn-fade-out').click(function() {
+        $('#interactive-box').stop(true, true).fadeOut(400);
+    });
+
+    $('#btn-fade-in').click(function() {
+        $('#interactive-box').stop(true, true).fadeIn(400);
+    });
+
+    // Efectos de deslizamiento
+    $('#btn-slide-up').click(function() {
+        $('#interactive-box').stop(true, true).slideUp(400);
+    });
+
+    $('#btn-slide-down').click(function() {
+        $('#interactive-box').stop(true, true).slideDown(400);
+    });
+
+    // Animaciones
     $('#btn-anim-expand').click(function() {
         $('#interactive-box').stop().animate({
             width: '320px',
